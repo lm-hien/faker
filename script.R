@@ -59,8 +59,9 @@ ggplot() +
             aes(date, cum, label = round(cum), colour = predicted),
             vjust = -1, fontface = "bold", show.legend = FALSE) +
   scale_colour_manual(values = c(`FALSE` = "grey20", `TRUE` = "tomato")) +
- scale_x_date(breaks = labels_df$date,
+  scale_x_date(breaks = labels_df$date,
              labels = format(labels_df$date, "%Y")) +
+  scale_y_continuous(expand = expansion(mult = c(0.05, 0.15))) +
   labs(x = NULL, y = "Total kills",
        title = "Faker's Worlds Kills 2026 season forecast",
        subtitle = "Will Faker reach 700 career kills in 2026?")
@@ -71,7 +72,7 @@ ggplot() +
 ggsave(
   "plot.png",
   width = 1200 / 150,   # 8 inches
-  height = 675 / 150,   # 4.5 inches (16:9)
+  height = 800 / 150,   # 4.5 inches (16:9)
   dpi = 300,
   bg = "white"
 )
